@@ -26,7 +26,7 @@ data Subst' = Push Name Term
 
 type Subst = [Subst']
 
-_Push :: Traversal' Subst' (Name, Term)
+_Push :: Prism' Subst' (Name, Term)
 _Push = prism' put get where
     put (n, t) = Push n t
     get (Push n t) = Just (n, t)
